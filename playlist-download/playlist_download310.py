@@ -151,18 +151,7 @@ def get_playlist_urls(url: str) -> list[dict]:
     return [{'url': url, 'video_id': i, 'output_dir': output_dir}
             for url, i in zip(playlist.video_urls, range(len(playlist)))]
 
-
-            
-def download_from_inputs():
-    urls = []
-    input_url = str(input(INPUT_STRING))
-    while input_url != 'd':
-        if input_url.startswith('https://'):
-            urls.append(input_url)
-        else:
-            print('URL must start with "https://"')
-        input_url = str(input())
-
+def download_all_urls(urls: list[str])
     print('Downloading')
 
     download_kwargs: list[dict] = []
@@ -192,6 +181,22 @@ def download_from_inputs():
     shutil.rmtree(os.path.join(HOME_DIR, TEMP_FOLDER_NAME), ignore_errors=True) 
     
     play_finished_sound()
+            
+def download_from_inputs():
+    urls = []
+    input_url = str(input(INPUT_STRING))
+    while input_url != 'd':
+        if input_url.startswith('https://'):
+            urls.append(input_url)
+        else:
+            print('URL must start with "https://"')
+        input_url = str(input())
+        
+    download_all_urls(urls)
+    
+
+
+
 
 if __name__ == '__main__':
     while True:

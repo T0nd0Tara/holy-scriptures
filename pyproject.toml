@@ -1,0 +1,19 @@
+[project]
+name = "holy-scriptures"
+version = "0.0.1"
+dependencies = [
+  "pytubefix",
+  "ffmpeg",
+]
+requires-python = ">=3.12"
+authors = [
+  {name = "T0nd0Tara"},
+]
+maintainers = [
+  {name = "T0nd0Tara"},
+]
+readme = "README.md"
+classifiers = [
+  "Programming Language :: Python"
+]
+

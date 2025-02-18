@@ -1,9 +1,9 @@
+#!/bin/env python
 import pytubefix
 import os
 import pathlib
 import unicodedata
 import re
-import winsound
 from concurrent import futures
 from functools import partial
 from itertools import repeat
@@ -35,9 +35,15 @@ def to_folder_name(value: str) -> str:
     return value
 
 def play_finished_sound():
+    try:
+        import winsound
+    except ModuleNotFoundError as error:
+        # running on linux
+        return
+
     hz = 2500
     length = 500
-    
+
     winsound.Beep(hz, length)
     sleep(length / 2000)
     winsound.Beep(hz, length)
@@ -151,7 +157,7 @@ def get_playlist_urls(url: str) -> list[dict]:
     return [{'url': url, 'video_id': i, 'output_dir': output_dir}
             for url, i in zip(playlist.video_urls, range(len(playlist)))]
 
-def download_all_urls(urls: list[str])
+def download_all_urls(urls: list[str]):
     print('Downloading')
 
     download_kwargs: list[dict] = []

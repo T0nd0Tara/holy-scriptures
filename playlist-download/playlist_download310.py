@@ -201,9 +201,6 @@ def download_from_inputs():
     download_all_urls(urls)
     
 
-
-
-
 if __name__ == '__main__':
     while True:
         download_from_inputs()
